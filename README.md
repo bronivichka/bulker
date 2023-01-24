@@ -10,8 +10,9 @@ rabbitmqctl add_vhost bulker
 rabbitmqctl set_permissions -p bulker bulker ".*" ".*" ".*"
 
 build cmd/rmqinit into bin/rmqinit
-run bin/rmqinit ./etc/config.yaml
+run bin/rmqinit ./config/config.yaml
 
-build and run bulker
+build bulker into bin/bulker
+run bin/bulker config/config.yaml
 check log file...
-check tables bulk, bulk_stat and bulk_msisdn
+check tables bulk, bulk_stat and bulk_msisdn records

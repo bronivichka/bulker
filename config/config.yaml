@@ -1,0 +1,43 @@
+Global:
+    Free_number: "Some number"
+    Test_mode: false
+Database:
+    User: bulker
+    Database: bulker
+    Password: ""
+    Host: "localhost"
+RabbitMQ:
+    Host:           "localhost"
+    Port:           5672
+    VirtualHost:    "bulker"
+    Login:          "bulker"
+    Password:       "bulker"
+    PrefetchCount:  100
+    PrefetchSize:   0  
+    ReconnectDelay: 10 
+    ReconsumeDelay: 10 
+    Exchange:
+        Name: "bulker"
+        Kind: "topic"
+        Expiration: "8640000"
+        Priority: 200
+        Queue:
+            -
+                Name: "Smpp_1"
+                Binding:
+                    - "free.#"
+            -
+                Name: "Bulker"
+                Binding:
+                    - "delivery_status_bulker"
+Bulk:
+    File:
+        LogFile: "/home/linas/bulker/log/bulker.log"
+        PidFile: "/home/linas/bulker/tmp/bulker.pid"
+    Interval: 10
+    Max_idle_conn: 3
+    Consume_queue: "Bulker"
+    File_path: "/home/linas/bulker/data/"
+    Msisdn_regexp: "^7\\d{10}$"
+    Msisdn_length: 11
+
